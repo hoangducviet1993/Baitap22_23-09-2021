@@ -11,17 +11,20 @@
 <input type="text" id="num2" placeholder="Number2">
 <br>
 <br>
-<button onclick="soSanhHaiSo()" >Check </button>
-<p id="res" ></p>
+<button onclick="nhap()" >Check </button>
+<p id="res" > </p>
 
 <script>
-    let a = parseInt(document.getElementById("num1").value);
-    let b = parseInt(document.getElementById("num2").value);
-    function soSanhHaiSo(a,b ){
-        if (a<b){
-            document.getElementById("res").innerHTML= "Số " +a+"lớn nhất";
+    function nhap(){
+        let c = parseInt(document.getElementById("num1").value);
+        let d = parseInt(document.getElementById("num2").value);
+        soSanhHaiSo(c,d)
+    }
+    function soSanhHaiSo(a,b){
+        if (a > b){
+           return  document.getElementById("res").innerHTML= "Số " +a+"lớn nhất";
         } else {
-            document.getElementById("res").innerHTML= "Số " +a +"Nhỏ hơn " +b+ "Tông 2 số = " +(a+b);
+           return  document.getElementById("res").innerHTML= "Số " +a +"Nhỏ hơn " +b+ "Tông 2 số = " +(a+b);
         }
     }
 </script>
