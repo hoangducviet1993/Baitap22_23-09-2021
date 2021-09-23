@@ -15,37 +15,38 @@
 <table id="list" border="1">
 </table>
 <div id="edit-form"></div>
-    <script>
-        let lisProduct = ["Ip13", "S10", "X18", "Ip12", "M20"];
-        display()
+<script>
+    let listProduct = ["Ip13", "S10", "X18", "Ip12", "M20"];
+    display()
 
-        function create() {
-            let product = document.getElementById("txt").value;
-            lisProduct.push(product);
-            display()
+    function create() {
+        let product = document.getElementById("txt").value;
+        listProduct.push(product);
+        display()
+    }
+
+    function display() {
+        let str = '<tr><td>Product Name</td><td></td><td>' + listProduct.length + ' Prouct</td></tr> '
+        for (let i = 0; i < listProduct.length; i++) {
+            str += `<tr>`;
+            str += `<td>${listProduct[i]}</td>`;
+            str += `<td><button onclick="showEditForm(${i})">Edit</button></td>`;
+            str += `<td><button>Delete</button></td>`;
+            str += `</tr>`;
         }
-        function display() {
-            let str = '<tr><td>Product Name</td><td></td><td>' + lisProduct.length + ' Prouct</td></tr> '
-            for (let i = 0; i < lisProduct.length; i++) {
-                str += `<tr>`;
-                str += `<td>${lisProduct[i]}</td>`;
-                str += `<td><button onclick="showEditform(${i})">Edit</button></td>`;
-                str += `<td><button>Delete</button></td>`;
-                str += `</tr>`;
-            }
-            document.getElementById("list").innerHTML = str;
-        }
-        function showEditform(index){
-            let str = `<input id="txtEdit" value="${lisProduct[index]}"><button onclick="save(${index})">Save</button>`
-            document.getElementById('edit-form').innerHTMl = str;
-        }
-        function save(index){
-            let newProduct =document.getElementById('txtEdit').value;
-            listProduct[index] =newProduct;
-            display();
-            document.getElementById("edit-form").innerHTML ='';
-        }
-    </script>
+        document.getElementById("list").innerHTML = str;
+    }
+    function showEditForm(index){
+        let str2 = `<input id="txtEdit" value="${listProduct[index]}"> <button onclick="save(${index})">Save</button>`;
+        document.getElementById("edit-form").innerHTML= str2;
+    }
+    function save(index){
+        let newProduct =document.getElementById('txtEdit').value;
+        listProduct[index] =newProduct;
+        display();
+        document.getElementById("edit-form").innerHTML ='';
+    }
+</script>
 
 </body>
 </html>
