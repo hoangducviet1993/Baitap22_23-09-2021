@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        .div1 {
+            background: rgba(232, 232, 232, 0.7);
+            width: 40%;
+            height: 100px;
+        }
+
+        .input1 {
+            width: 70%;
+            height: 30px;
+            margin-top: 30px;
+        }
+
+        .button {
+            width: 10%;
+            height: 35px;
+            background: #70cb1e;
+            color: #ffffff;
+            border-radius: 5px;
+            border: 1px #70cb1e solid;
+        }
+
+        .button1 {
+            width: 60px;
+            height: 35px;
+            background: #70cb1e;
+            color: #ffffff;
+            border-radius: 5px;
+            border: 1px #70cb1e solid;
+        }
+
+        td {
+            height: 50px;
+            border-collapse: collapse;
+
+        }
+
+        tr:nth-child(even) {
+            background: rgba(232, 232, 232, 0.7);
+        }
+    </style>
+</head>
+<body>
+<h2>Add new product </h2>
+
+<div class="div1">
+    <center>
+        <input class="input1" type="text" placeholder="New Product" id="input">
+        <button class="button" onclick="addProduct()">Add</button>
+    </center>
+</div>
+<h2>Display all product</h2>
+<p id="listProduct"></p>
+<script>
+    let list = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple iPhone 6S"]
+    print();
+
+    function addProduct(){
+        let input = document.getElementById("input");
+        if (input.value !== ""){
+            list.push(input.value);
+            print();
+        }else {
+            alert("Hãy điền tên sản phẩm muốn thêm vào chỗ trống")
+        }
+    }
+    function editProduct(changeID){
+        let change = prompt("Bạn muốn sửa tên sản phẩm thành : ")
+        list[changeID] = change;
+        print();
+    }
+    function deleteProduct(deleteID){
+        if (deleteID === 0){
+            list.shift();
+            print();
+        }else {
+            list.splice(deleteID,1);
+            print();
+        }
+    }
+    function print() {
+        let data = "<table style='border-collapse: collapse;' width='60%'><tr><td colspan='2'><h3>Product Name</h3></td><td style='color: #a30a0a;text-align: right'><b>" + list.length + " products</b></td></tr>";
+        for (let i = 0; i < list.length; i++) {
+            data += "<tr><td><span>" + list[i] + "</span></td><td><button id="+i+" class='button1' onclick='editProduct(this.id)'>Edit</button></td><td><button class='button1' value="+ i+" onclick='deleteProduct(this.value)'>Delete</button></td></tr>"
+        }
+        document.getElementById("listProduct").innerHTML = data;
+    }
+
+
+</script>
+</body>
+</html>
